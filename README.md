@@ -42,7 +42,7 @@ This project It is being developed to learn the basis of Go programming language
 # Clone this repo
 $ https://github.com/LucasPereiraMiranda/go-fintechs-api
 
-# Inside root dir, build dependencies with:
+# build dependencies in go module:
 $ go get
 
 # Inside project, run docker-compose to up docker postgres & pgadmin containers:
