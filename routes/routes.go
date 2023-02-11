@@ -1,10 +1,12 @@
 package routes
 
 import (
-	"github.com/gorilla/mux"
 	"go-fintechs-api/controllers"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/handlers"
+	"github.com/gorilla/mux"
 )
 
 func HandleRequest() {
@@ -15,6 +17,5 @@ func HandleRequest() {
 	router.HandleFunc("/api/fintechs", controllers.CreateFintech).Methods("Post")
 	router.HandleFunc("/api/fintechs/{id}", controllers.DeleteFintech).Methods("Delete")
 	router.HandleFunc("/api/fintechs/{id}", controllers.EditFintech).Methods("Put")
-
-	log.Fatal(http.ListenAndServe(":8000", router))
+	log.Fatal(http.ListenAndServe(":8000", handlers.CORS(handlers.AllowedOrigins([]string{"*"}))(router)))
 }
